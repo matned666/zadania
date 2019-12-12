@@ -27,8 +27,4 @@ public class Recurence {
         if (i == 0) return s;
         else return procentSkladany(i-1,s,p)+procentSkladany(i-1,s,p)*p;
     }
-
-    
-
-
 }

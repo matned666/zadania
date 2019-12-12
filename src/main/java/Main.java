@@ -33,7 +33,7 @@ public class Main {
 //        }
 //
 //        System.out.println(Recurence.procentSkladany(2,5,5));
-        FileList.printFilteredFiles(2,"D:\\Java\\testowe\\","");
+        FileList.printFilteredFiles(100,"D:\\Java\\testowe\\","txt");   //podaje ilość subfolderów, ścieżkę i końcówkę plików (np. rozszerzenie)
 
     }
 }
