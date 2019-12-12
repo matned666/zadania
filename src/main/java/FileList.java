@@ -1,6 +1,7 @@
 import java.io.*;
 import java.nio.file.*;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class FileList {
@@ -36,19 +37,19 @@ public class FileList {
 
     }
 
-    private void filteredFiles(String extention, int subFolders) throws IOException {
+    private void filteredFiles(Predicate<File> predicate, int subFolders) throws IOException {
         this.files(subFolders).stream()
-                .filter(x -> x.getName().endsWith(extention))
+                .filter(predicate)
                 .map(x-> x.getParent().toUpperCase()+"\\"+x.getName())
                 .forEach(System.out::println);
     }
 
-    public static void printFilteredFiles(int subFolders,String path, String extention) {
+    public static void printFilteredFiles(int subFolders,String path, Predicate<File> predicate) {
         try {
             if(new File(path).isFile()) throw new MyVariousException();
             if(path.trim().equals("")) throw new MyVariousException2();
             FileList list = new FileList(path);
-            list.filteredFiles(extention,subFolders);
+            list.filteredFiles(predicate,subFolders);
         }catch(IOException ex){
             System.out.println("Nieprawidłowa ścieżka dostępu");
         }catch (MyVariousException ex){
