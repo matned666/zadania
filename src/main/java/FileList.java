@@ -15,7 +15,9 @@ public class FileList {
         List<File> filesList = Files.list(new File(this.path).toPath())
                 .map(Path::toFile)
                 .collect(Collectors.toList());
+        int numberOfSubFolders=0;
         for (int j = 1 ; j <= subFolders ; j++) {
+            numberOfSubFolders = 0;
             int filesListLength = filesList.size();
             for (int i = 0; i < filesListLength; i++) {
                 if (filesList.get(i).isDirectory()) {
@@ -23,9 +25,11 @@ public class FileList {
                             .map(Path::toFile)
                             .collect(Collectors.toList()));
                     filesList.remove(filesList.get(i));
+                    numberOfSubFolders++;
                 }
 
             }
+            if(numberOfSubFolders == 0) break;
         }
 
         return filesList;
