@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -41,6 +42,15 @@ public class Main {
 
         MatrioshkaBuilder matrioshka = new MatrioshkaBuilder(6);
         matrioshka.printMatrioshka();
+
+        List list = new ArrayList();
+        list.add("h");
+        list.add(3);
+
+        String as = "abcde";
+        as.substring(3,4);
+        System.out.println();
+        System.out.println(as);
 
 
     }
