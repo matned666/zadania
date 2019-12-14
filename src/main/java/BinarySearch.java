@@ -4,21 +4,23 @@ import java.util.stream.Stream;
 
 public class BinarySearch<E extends Comparable<E>> implements Comparable{
 
-    E endIndex;
-    E elementToSearch;
-    E[] items;
+//    E endIndex;
+//    E elementToSearch;
+//    E[] items;
 
-
-    public BinarySearch(E elementToSearch, E[] items) {
-        this.elementToSearch = elementToSearch;
-        this.endIndex = items[items.length-1];
-        this.items = items;
+    public BinarySearch() {
     }
+
+//    public BinarySearch(E elementToSearch, E[] items) {
+//        this.elementToSearch = elementToSearch;
+//        this.endIndex = items[items.length-1];
+//        this.items = items;
+//    }
 
 //    public boolean search( int startIndex, int endIndex){
 //
 //
-//        int pivot = items[indexOfPivot];
+//        int pivot = items.get(indexOfPivot);
 //        if(this.elementToSearch == pivot) return true;
 //        if(startIndex==endIndex) return false;
 //        if(elementToSearch > pivot){
@@ -43,20 +45,12 @@ public class BinarySearch<E extends Comparable<E>> implements Comparable{
 //        return Arrays.stream(temp)
 //                .max().getAsInt();
 //    }
-//
-//
-    public E getHighest(List<E> array){
-        sortedArrayBombelkowo(array);
-        return array.get(array.size()-1);
-    }
 
     public void numberOfEach (){
         List<E> temp = new LinkedList<>();
-
         for(int i = 0 ; i < temp.size() ; i++){
             temp.add(temp.get(i));
         }
-
         for(int i = 0;i<temp.size();i++){
             if(temp.get(i).equals(0)){
                 System.out.print ("["+i+","+temp.get(i)+"],");
@@ -72,10 +66,42 @@ public class BinarySearch<E extends Comparable<E>> implements Comparable{
         return itemArr;
     }
 
+    public List<E> sortByChoice(List<E> unsorted){
+        List<E> temp = new LinkedList<>();
+        List<E> temp2 = new LinkedList<>();
+        for(E el: unsorted){
+            temp2.add(el);
+        }
+        for(int i = 0 ; i < unsorted.size() ; i++){
+            temp.add(getLowest(temp2));
+            unsorted.remove(getLowest(temp2));
+        }
+        return temp;
+    }
+
+    public E getHighest(List<E> elements) {
+        E max = elements.get(0);
+        for (E element : elements) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
+    }
+
+    public E getLowest(List<E> elements) {
+        E min = elements.get(0);
+        for (E element : elements) {
+            if (element.compareTo(min) < 0) {
+                min = element;
+            }
+        }
+        return min;
+    }
+
     public void printArray(List<E> array){
         array.stream().forEach(System.out::print);
     }
-
 
     public List<E> sortedArrayBombelkowo (List<E> array){
         for(int i=0 ; i< array.size();i++){
@@ -86,19 +112,6 @@ public class BinarySearch<E extends Comparable<E>> implements Comparable{
         }
         return array;
     }
-
-//    public E[] quickSort (E[] array){
-//        int[][] temp = new int[array.length][];
-//        for(int i = 0; i<array.length;i++){
-//            temp[i] = new int[array.length];
-//        }
-//        int pivot = temp.length/2;
-//
-//
-//    }
-
-
-
 
     public List<E> quickSort  (List<E> items){
         if(items.isEmpty() || items.size()==1) return items;
@@ -117,9 +130,7 @@ public class BinarySearch<E extends Comparable<E>> implements Comparable{
                 .collect(Collectors.toList());
 
         return Stream.of(quickSort(smaller),exactPivot,quickSort(greater)).flatMap(Collection::stream).collect(Collectors.toList());
-
     }
-
 
     @Override
     public int compareTo(Object o) {

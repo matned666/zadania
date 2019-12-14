@@ -36,10 +36,12 @@ public class Main {
         System.out.println();
         System.out.println("Prime number check: "+PrimeNumbCheck.isPrime(11));
 
-        Integer[] lista = {1,9,2,3,5,4,5,6,7,8,9,5,7,9,9,9,9,6,9};
+//        Integer[] lista = {1,9,2,3,5,4,5,6,7,8,9,5,7,9,9,9,9,6,9};
         List<Integer> list = new ArrayList<>(Arrays.asList(9,1,9,2,3,5,4,5,-6,7,8,9,5,7,9,9,9,9,6,9));
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(9,1,9,2,3,4,4,-5,-6,7,8,9,-5,7,9,9,9,9,6,9));
+        List<Integer> list3 = new ArrayList<>(Arrays.asList(9,1,9,2,3,5,4,5,-6,7,8,-9,-5,-7,-9,-9,-9,-9,6,9));
 
-        BinarySearch search = new BinarySearch(8, lista);
+        BinarySearch search = new BinarySearch();
 //        System.out.println(search.search(0,lista.length-1));
 //        System.out.println(search.mostCommonNumber());
 
@@ -50,12 +52,10 @@ public class Main {
         System.out.println();
         search.printArray(search.swap(list,0,4));
         System.out.println();
+        search.printArray(search.quickSort(list2));
+        System.out.println();
         search.printArray(search.sortedArrayBombelkowo(list));
         System.out.println();
-        search.printArray(search.quickSort(list));
-
-
-
-
+        search.printArray(search.quickSort(list3));
     }
 }
