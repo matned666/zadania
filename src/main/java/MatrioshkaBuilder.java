@@ -8,7 +8,7 @@ public class MatrioshkaBuilder {
     private int iD;
     private int i;
 
-    public MatrioshkaBuilder (int i){
+    public MatrioshkaBuilder (int i)  {
         matrioshkas=new ArrayList<>();
         this.i = i;
         this.iD = 1;
