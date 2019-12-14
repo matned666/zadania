@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.function.Function;
 
 public class Main {
 
@@ -34,7 +37,11 @@ public class Main {
 //        }
 //
 //        System.out.println(Recurence.procentSkladany(2,5,5));
-        FileList.printFilteredFiles(2,"D:\\Java\\testowe\\",x->x==x);   //podaje ilość subfolderów, ścieżkę i predykat filtra
+        FileList.printFilteredFiles(2,"D:\\Java\\testowe\\",x->x.getName().endsWith(".txt"));   //podaje ilość subfolderów, ścieżkę i predykat filtra
+
+        MatrioshkaBuilder matrioshka = new MatrioshkaBuilder(6);
+        matrioshka.printMatrioshka();
+
 
     }
 }
